@@ -1,0 +1,82 @@
+<html>
+    <style>
+        .item {
+            color: red
+        }
+    </style>
+    <head>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    </head>
+
+    <body>
+
+        <div id='app'></div>
+        <script>
+            // 全局组件
+            Vue.component('Vbtn',{
+                template:`
+                    <botton>按钮</button>
+                `
+            });
+
+
+
+            // <!-- 1.声明  2.挂载 -->  局部组件
+            var Vheader = {
+                template: `
+                    <div>我是头部组件
+                        <Vbtn></Vbtn>
+                    </div>
+                `,
+                data() {
+                    return {
+                        
+                    }
+                },
+            };
+            
+
+            
+            var App = {
+                template: `
+                    <div>
+                    <Vheader/>
+                    </div>
+                `,
+                data() {
+                    return {
+                        
+                    }
+                },
+                components:{
+                    Vheader
+                }
+            };
+            
+
+            new Vue({
+                el: "#app",
+                template: `
+                // 4. 使用
+                    <App><App/>
+                `,
+                data:function() {
+                    return {
+        
+                    }
+                },
+                // 3.挂载
+                components:{
+                    // App 一样属性  一个也可以
+                     App:App
+                }
+            });
+        
+        
+
+
+        </script>
+    </body>
+</html>
