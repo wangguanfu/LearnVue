@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+</head>
+<body>
+    <div id="app">
+           
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <script type="text/javascript">
+
+        //地址栏  路由范式
+        //xxx.html/uesr1/
+
+
+        //2.使用
+        Vue.use(VueRouter);
+
+        //声明组件
+        var Song = {
+            template: ` <div>我是歌曲</div>`,
+            created() {
+                console.log(this.$router) //路由信息对象
+            },
+        };
+
+        
+        var Movie = {
+            template: ` <div>我是电影</div>`,
+            created() {
+                
+            },
+        };
+
+
+        var Home = {
+            template : `
+                <div>
+                    这是首页
+                    <br/>
+                    <router-link to='/home/song'>歌曲</router-link>
+                    <router-link to='/home/movie'>电影</router-link>
+                    <router-view></router-view>
+
+                </div>
+            `
+        };
+
+        //是有先后顺序的
+        //3.创建对象
+        var router = new VueRouter({
+            //4. 配置
+            routes: [
+                {   
+                    //动态路由
+                    path:"/home",
+                    name:'home',
+                    component:Home,
+                    children:[
+                        {
+                            path:'song',
+                            component:Song,
+                        },
+                        {
+                            path:'movie',
+                            component:Movie,
+                        }   
+                    ]
+                },
+            ]   
+        })
+
+
+        
+        var App = {
+            template:`
+                <div>
+                    <router-link :to="{name:'home'}">首页</router-link>
+                    <!--路由组件的出口 -->
+                    <router-view></router-view>
+                </div>
+            `
+        }
+        
+        //5.挂着
+        new Vue({
+            el:"#app",
+            router:router,
+            template:`<App/>`,
+            components:{
+                App
+            }
+        })
+        
+        
+        
+        // 路由作用： 单页面应用 局部更新（ajax） 锚点（agular react都可以）
+	</script>
+
+	
+</body>
+</html>

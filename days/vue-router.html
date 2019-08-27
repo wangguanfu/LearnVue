@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+</head>
+<body>
+    <div id="app">
+           
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <script type="text/javascript">
+        //2.使用
+        Vue.use(VueRouter);
+
+        //声明组件
+        var Login = {
+            template: ` <div>我是登录</div>`
+        };
+
+        
+        var Register = {
+            template: ` <div>我是注册</div>`
+        };
+
+
+        //3.创建对象
+        var router = new VueRouter({
+            //4. 配置
+            routes: [
+                {
+                    path:"/login",
+                    component:Login
+                },
+                {
+                    path:"/register",
+                    component:Register
+                }
+
+            ]   
+        })
+
+        
+        var App = {
+            template:`
+                <div>
+                    <router-link to='/login'>登录</router-link>
+                    <router-link to='/register'>注册</router-link>
+                    <!--路由组件的出口 -->
+                    <router-view></router-view>
+                </div>
+            `
+        }
+        
+        //5.挂着
+        new Vue({
+            el:"#app",
+            router:router,
+            template:`<App/>`,
+            components:{
+                App
+            }
+        })
+        
+        
+        
+        // 路由作用： 单页面应用 局部更新（ajax） 锚点（agular react都可以）
+	</script>
+
+	
+</body>
+</html>

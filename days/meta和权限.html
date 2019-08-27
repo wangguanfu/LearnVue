@@ -1,0 +1,107 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+</head>
+<body>
+    <div id="app">
+           <router-link to='/home'>首页</router-link>
+           <router-link to='/blog'>我的博客</router-link>
+           <router-link to='/login'>登录</router-link>
+           <a href="javascript ">推出</a>
+           <router-view></router-view>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <script type="text/javascript">
+
+        //地址栏  路由范式
+        //xxx.html/uesr1/
+        var Home = {
+            template: `
+                <div>
+                    我是首页
+                </div>
+            `
+        };
+
+        var Login = {
+            template: `
+                <div>
+                    <input type='text'/>
+                    <input type='text'/>
+                    <input type='button' value='登录'/>
+
+                </div>
+            `
+        };
+
+
+        var Blog = {
+            template: `
+                <div>
+                    我是博客
+                </div>
+            `
+        };
+        //2.使用
+        Vue.use(VueRouter);
+
+        var router = new VueRouter ({
+
+            routes: [
+                {
+                    path:'/',
+                    redirect:'/home'
+
+                },
+                {
+                    path:'/home',
+                    component:Home
+
+                },
+                {
+                    path:'/blog',
+                    component:Blog,
+                    meta: {
+                    //给未来的路由 做权限控制 全局守卫 做参照的
+                        auth:true
+                        //导航的
+                    }
+
+                },
+                {
+                    path:'/login',
+                    component:Login
+
+                },
+
+            ]
+        })
+
+        router.beforeEach((to, from, next) => {
+                // to and from are both route objects. must call `next`.
+                console.log(to)
+                console.log(from)
+                next()
+            });
+      
+
+        new Vue({
+            el:"#app",
+            router,
+        })
+        
+        
+        
+        // 路由作用： 单页面应用 局部更新（ajax） 锚点（agular react都可以）
+	</script>
+
+
+</body>
+</html>

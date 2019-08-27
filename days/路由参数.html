@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+</head>
+<body>
+    <div id="app">
+           
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <script type="text/javascript">
+
+        //地址栏  路由范式
+        //xxx.html/uesr1/
+
+
+        //2.使用
+        Vue.use(VueRouter);
+
+        //声明组件
+        var UserParams = {
+            template: ` <div>user1</div>`,
+            created() {
+                console.log(this.$router) //路由信息对象
+            },
+        };
+
+        
+        var UserQuery = {
+            template: ` <div>2user2</div>`,
+            created() {
+                
+            },
+        };
+
+
+        //3.创建对象
+        var router = new VueRouter({
+            //4. 配置
+            routes: [
+                {   
+                    //动态路由
+                    path:"/user/:id",
+                    name:'userP',
+                    component:UserParams
+                },
+                {
+                    path:"/user",
+                    name:'userQ',
+                    component:UserQuery
+                }
+
+            ]   
+        })
+
+        
+        var App = {
+            template:`
+                <div>
+                    <router-link :to="{name:'userP', params:{id:1}}">user1</router-link>
+                    <router-link :to="{name:'userQ', query:{userId:2}}">user2</router-link>
+                    <!--路由组件的出口 -->
+                    <router-view></router-view>
+                </div>
+            `
+        }
+        
+        //5.挂着
+        new Vue({
+            el:"#app",
+            router:router,
+            template:`<App/>`,
+            components:{
+                App
+            }
+        })
+        
+        
+        
+        // 路由作用： 单页面应用 局部更新（ajax） 锚点（agular react都可以）
+	</script>
+
+	
+</body>
+</html>
