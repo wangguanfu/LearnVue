@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+//			var a;
+//			console.log(a);
+			
+			var person={
+				
+				gender:"男",
+				height:184,
+				toShang:function() {
+					console.log("hi ")
+				}
+			};
+			
+			console.log(person.toShang())
+			//对象字面量
+			
+			//构建函数
+			function Per(age, gender){
+				this.age=age;
+				this.gender=gender
+				
+			}
+			
+			var p1=new Per(5, "未知")
+			console.log(p1.age);
+			
+			function fn(){
+				return [1,3]
+			}
+			
+			Per.prototype.run=function(){
+				console.log("111")
+			}
+			p1=new Per(1,'212')
+			p2=new Per(1,'212')
+
+			f = new fn 	
+			console.log( f instanceof fn) 
+			
+			p1.run()
+			p2.run()
+			console.log(p1.run()===p2.run()) 
+			
+			t = [1,3,4]
+			for (x in t) {
+			    console.log(x);
+			}
+
+			
+		</script>
+	</body>
+</html>
