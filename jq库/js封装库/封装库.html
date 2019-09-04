@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div >aa</div>
+    <div>bb</div>
+    <div>vv</div>
+    <input  class="d" type="button" value="">
+    <input type="text">
+    <script>
+        //$("div").css("color","red") 给div字体颜色为红色
+        (function(global){
+
+            function jQuery(selector) {
+                return new F(selector)
+            }
+
+            function F(selector){
+                // const elements = document.getElementsByTagName(selector)
+                const elements = document.querySelectorAll(selector)
+                 
+                this.elements=elements
+
+            }
+
+
+            F.prototype.css=function(name,value){
+                for(let i =0; i<this.elements.length;i++){
+                    let elements = this.elements[i]
+                    elements.style[name]=value
+                }
+            }
+
+
+            window.$ = window.jQuery =jQuery;
+        })(window)
+
+
+        $("div").css("color","red")
+        $(".d").css("background","green")
+        $("input").css("background","red")
+
+    
+    </script>
+
+
+
+
+
+
+</head>
+<body>
+    
+</body>
+</html>

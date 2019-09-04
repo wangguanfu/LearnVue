@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			function q(){
+				return new Promise((resolve,reject)=>{
+					setTimeout(()=>{
+					
+						reject('12121')
+					},1000)
+				})
+			}
+			
+//			(async function(){
+//				let res = await q();
+//				console.log(res)
+//			})()
+
+			(async function(){
+				try{
+					let res = await q();
+					console.log(res)
+				}catch(e){
+					console.log(e)
+				}
+			})()
+		
+			
+			
+			
+		</script>
+	</body>
+</html>

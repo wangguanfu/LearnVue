@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function q(){
+				return new Promise((resolve)=>{
+					setTimeout(()=>{
+					
+						resolve('nihao')
+					},1000)
+				})
+			}
+			
+			(async function(){
+				const res = await q()
+				console.log(res)
+				
+				const res1 = await q()
+				console.log(res1)
+				
+				const res2 = await q()
+				console.log(res2)
+				
+			})()
+			
+			
+		</script>
+		
+		
+	</body>
+</html>
