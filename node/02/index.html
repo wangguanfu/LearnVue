@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		qqqqqq
+		<input type="button" id="btn" value="" />点我
+		
+		<script type="text/javascript">
+			document.querySelector('#btn').onclick=function(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('get', '/test');
+				xhr.send();
+				
+				xhr.onreadystatechange =function(){
+					console.log(xhr.readyState);
+					console.log(xhr.responseText);
+
+					
+				}
+				
+				
+				
+			}
+			
+			
+		</script>
+		
+		
+	</body>
+</html>
