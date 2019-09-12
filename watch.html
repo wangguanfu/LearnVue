@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+</head>
+<body>
+    <div id="app">
+        <input type="" name='' v-model='msg'>
+        <h3>{{ msg }}</h3>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script type="text/javascript">
+    
+            new Vue({
+                el: "#app",
+                data:function(){
+                    return{
+                        msg:""
+                    }
+                },
+                watch: {
+                    msg:function(newv, oldv){
+                        if (newv=='123')
+                        console.log(213)
+                    }
+                },  
+            })
+
+
+	</script>
+
+	
+</body>
+</html>
