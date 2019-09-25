@@ -1,0 +1,60 @@
+<html>
+    <style>
+        .item {
+            color: red
+        }
+    </style>
+    <head>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    </head>
+
+    <body>
+        <div id="app">
+
+         </div>
+
+        <script>
+            // 组件  自定义属性 全局的
+            // Vue.component('todo-item', {
+            //     props: ['item'],
+            //     template: '<li class="item">{{item}}</li>'
+            // })
+
+            var App ={
+                template: `
+                    <div>
+                        <button @click='sendAjax'>发请求</button>
+                    </div>
+                `,
+
+                methods: {
+                    sendAjax
+                },
+            };
+
+            Vue.prototype.$axios = axios
+
+
+            new Vue(
+                {
+                    el:"#app",
+                    data(){
+                        return {
+                        }
+
+                    },
+                    methods: {
+                        handlerClick() {
+                            this.list.push(this.info)
+                            this.info=''
+                        }
+                    }
+                }
+            )
+        
+        
+        </script>
+    </body>
+</html>

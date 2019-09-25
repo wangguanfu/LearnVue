@@ -12,7 +12,8 @@ server2.use(function (context,next) {
     context.body = 'koa ok';
     next()
 })
-server2.use(()=>{
+server2.use((ctx)=>{
+    
     console.log('wwwwww')
 })
 
@@ -20,3 +21,34 @@ server2.use(()=>{
 server2.listen(8999,()=>{
     console.log("koa");
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
